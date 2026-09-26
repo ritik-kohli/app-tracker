@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>App tracker</title>
+<link rel="icon" href="images/play-store.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a7.5 7.5 0 0 0 8.3 12.4A9 9 0 1 1 12 3z"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M3 12h1M20 12h1M12 3v1M12 20v1M5.6 5.6l.7.7M17.7 5.6l-.7.7M17.7 18.4l-.7-.7M6.3 17.7l-.7.7"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L19 4M16 7l2 2M14 9l2 2"/></symbol><symbol id="i-file-settings" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 17h4"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M17 7L7 17M8 7h9v9"/></symbol><symbol id="i-brand-github" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10c0 4-6 3-11 7"/></symbol></svg>
+<div class="wrap" id="page">
+
+  <div class="top">
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></button>
+  </div>
+
+  <header class="hero">
+    <div>
+      <h1 id="title"></h1>
+      <p class="sub" id="subtitle"></p>
+      <div class="accounts">
+        <span class="acc"><span class="ico-img gp" aria-hidden="true"></span><span id="playAccount"></span></span>
+        <span class="acc"><span class="ico-img as" aria-hidden="true"></span><span id="iosAccount"></span></span>
+      </div>
+      <div class="updated" id="updated"></div>
+    </div>
+    <div class="mosaic" id="mosaic" aria-hidden="true"></div>
+  </header>
+
+  <section class="stores">
+    <a class="store play" id="playStoreCard" target="_blank" rel="noopener">
+      <div class="store-icon"><img src="images/play-store.png" alt="" width="56" height="56"></div>
+      <div><h3>View all on Google Play</h3><p id="playStoreSub"></p></div>
+      <div class="count"><b id="countPlay">0</b><span>listed here</span></div>
+      <svg class="ico go" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+    </a>
+    <a class="store ios" id="appStoreCard" target="_blank" rel="noopener">
+      <div class="store-icon"><img src="images/app-store.png" alt="" width="56" height="56"></div>
+      <div><h3>View all on the App Store</h3><p id="appStoreSub"></p></div>
+      <div class="count"><b id="countIos">0</b><span>listed here</span></div>
+      <svg class="ico go" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+    </a>
+  </section>
+
+  <div class="section-head">
+    <div>
+      <h2>Applications</h2>
+      <p id="appCount"></p>
+    </div>
+    <div class="tools">
+      <label class="search"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Search by name or package" aria-label="Search apps"></label>
+      <div class="chips" role="group" aria-label="Filter apps">
+        <button class="chip" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" data-f="both" aria-pressed="false">Both stores</button>
+        <button class="chip" data-f="missing" aria-pressed="false">Missing info</button>
+      </div>
+    </div>
+  </div>
+  <div class="apps" id="apps"></div>
+
+  <div class="section-head">
+    <div>
+      <h2>Links and versions</h2>
+      <p>All data comes from apps.json. Update that file after each release.</p>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Application</th><th>Repository</th><th>Google Play</th><th>App Store</th>
+          <th>Keystore (.jks)</th><th>key.properties</th><th>Android version</th><th>iOS version</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div class="note"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><div>Keystore and key.properties links should point to a restricted folder, never a public link. Anyone holding both files can sign updates as your company, and a lost upload key needs a reset request to Google.</div></div>
+
+  <footer>Edit <code>apps.json</code> to add apps, links, or versions. Icons live in the <code>images</code> folder.</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const TINTS = ["#E3862B","#2F5FD0","#0F8A6E","#B8487A","#6B4FC9","#C4552F","#1F7A99","#8A6A12"];
+const IMG_ICONS = {"brand-google-play":"gp","brand-apple":"as"};
+let APPS = [], filter = "all", query = "";
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ic = n => IMG_ICONS[n] ? `<span class="ico-img ${IMG_ICONS[n]}" aria-hidden="true"></span>` : `<svg class="ico" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const initials = n => n.split(/[\s-]+/).filter(w => /^[A-Za-z]/.test(w)).slice(0,2).map(w => w[0].toUpperCase()).join("");
+const repoName = u => (u || "").split("/").filter(Boolean).pop() || "";
+const isMissing = a => !a.playStoreUrl || !a.appStoreUrl || !a.keystoreUrl || !a.keyPropertiesUrl || !a.androidVersion || !a.iosVersion;
+
+function iconHTML(a, i){
+  const bg = TINTS[i % TINTS.length];
+  const fallback = esc(initials(a.name));
+  if (a.icon) return `<div class="app-icon" style="background:${bg}"><img src="${esc(a.icon)}" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('${fallback}'))"></div>`;
+  return `<div class="app-icon" style="background:${bg}">${fallback}</div>`;
+}
+
+function linkCell(url, icon, label, extraClass=""){
+  if (!url) return `<span class="missing">${ic("plus")}Add link</span>`;
+  return `<span class="lnk ${extraClass}"><a href="${esc(url)}" target="_blank" rel="noopener">${ic(icon)}${esc(label)}</a><button class="copy" data-copy="${esc(url)}" aria-label="Copy link">${ic("copy")}</button></span>`;
+}
+const verCell = v => v ? esc(v) : `<span class="missing">Not set</span>`;
+
+function visible(){
+  return APPS.map((a,i) => ({a,i})).filter(({a}) => {
+    if (filter === "both" && !(a.playStoreUrl && a.appStoreUrl)) return false;
+    if (filter === "missing" && !isMissing(a)) return false;
+    if (!query) return true;
+    return [a.name, a.packageName, a.category, repoName(a.git)].join(" ").toLowerCase().includes(query);
+  });
+}
+
+function render(){
+  const list = visible();
+  $("#appCount").textContent = `${list.length} of ${APPS.length} apps`;
+  $("#countPlay").textContent = APPS.filter(a => a.playStoreUrl).length;
+  $("#countIos").textContent = APPS.filter(a => a.appStoreUrl).length;
+
+  $("#mosaic").innerHTML = APPS.slice(0,8).map((a,i) =>
+    `<div class="tile" style="background:${TINTS[i%TINTS.length]}">${a.icon ? `<img src="${esc(a.icon)}" alt="" onerror="this.remove()">` : ""}</div>`).join("");
+
+  $("#apps").innerHTML = list.length ? list.map(({a,i}) => `<article class="app">
+      <div class="app-top">${iconHTML(a,i)}<div><h3>${esc(a.name)}</h3><div class="cat">${esc(a.category)}</div></div></div>
+      <div class="plats">
+        <span class="pill ${a.playStoreUrl ? "on-g" : "off"}">${ic("brand-google-play")}${a.playStoreUrl ? esc(a.androidVersion || "Live") : "No Play link"}</span>
+        <span class="pill ${a.appStoreUrl ? "on-a" : "off"}">${ic("brand-apple")}${a.appStoreUrl ? esc(a.iosVersion || "Live") : "No App Store link"}</span>
+      </div>
+      <div class="app-links">
+        ${a.git ? `<a href="${esc(a.git)}" target="_blank" rel="noopener">${ic("brand-github")}Repo</a>` : `<span class="nolink">${ic("brand-github")}Repo</span>`}
+        ${a.playStoreUrl ? `<a href="${esc(a.playStoreUrl)}" target="_blank" rel="noopener">${ic("brand-google-play")}Play</a>` : `<span class="nolink">${ic("brand-google-play")}Play</span>`}
+        ${a.appStoreUrl ? `<a href="${esc(a.appStoreUrl)}" target="_blank" rel="noopener">${ic("brand-apple")}iOS</a>` : `<span class="nolink">${ic("brand-apple")}iOS</span>`}
+      </div>
+    </article>`).join("") : `<div class="empty">No apps match that search. Clear the search or pick another filter.</div>`;
+
+  $("#rows").innerHTML = list.length ? list.map(({a,i}) => `<tr>
+      <td><div class="cell-app">${iconHTML(a,i)}<div><b>${esc(a.name)}</b><small>${esc(a.packageName)}</small></div></div></td>
+      <td>${linkCell(a.git, "brand-github", repoName(a.git))}</td>
+      <td>${linkCell(a.playStoreUrl, "brand-google-play", "Open")}</td>
+      <td>${linkCell(a.appStoreUrl, "brand-apple", "Open")}</td>
+      <td>${linkCell(a.keystoreUrl, "key", "Keystore", "key")}</td>
+      <td>${linkCell(a.keyPropertiesUrl, "file-settings", "Properties", "key")}</td>
+      <td class="ver">${verCell(a.androidVersion)}</td>
+      <td class="ver">${verCell(a.iosVersion)}</td>
+    </tr>`).join("") : `<tr><td colspan="8" class="empty">No apps match that search.</td></tr>`;
+}
+
+function applyMeta(d){
+  document.title = d.title || "App tracker";
+  $("#title").textContent = d.title || "App tracker";
+  $("#subtitle").textContent = d.subtitle || "";
+  const ps = d.stores?.playStore || {}, as = d.stores?.appStore || {};
+  $("#playAccount").textContent = `Google Play: ${ps.account || ""}`;
+  $("#iosAccount").textContent = `App Store: ${as.account || ""}`;
+  $("#playStoreSub").textContent = `${ps.account || ""} developer page`;
+  $("#appStoreSub").textContent = `${as.account || ""} developer page`;
+  if (ps.url) $("#playStoreCard").href = ps.url;
+  if (as.url) $("#appStoreCard").href = as.url;
+  $("#updated").textContent = d.lastUpdated
+    ? `Last updated ${new Date(d.lastUpdated + "T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"})}` : "";
+}
+
+async function init(){
+  try{
+    const res = await fetch("apps.json", {cache:"no-store"});
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    APPS = data.apps || [];
+    applyMeta(data);
+    render();
+  }catch(err){
+    $("#page").innerHTML = `<div class="load-error"><h2>Couldn't load apps.json</h2>
+      <p>Browsers block reading local files when a page is opened by double-clicking it. Open the folder in a terminal and run a small server, then visit the address it prints:</p>
+      <p><code>npx serve</code> or <code>python -m http.server 8000</code></p>
+      <p>If the page is already on a server, check that apps.json sits next to index.html and is valid JSON.</p></div>`;
+  }
+}
+
+$("#q").addEventListener("input", e => { query = e.target.value.trim().toLowerCase(); render(); });
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  filter = c.dataset.f;
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c));
+  render();
+}));
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  navigator.clipboard?.writeText(b.dataset.copy).then(() => toast("Link copied"), () => toast("Couldn't copy the link"));
+});
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 1600); }
+
+const root = document.documentElement;
+function setTheme(t){ root.dataset.theme = t; $("#themeBtn").innerHTML = ic(t === "dark" ? "sun" : "moon"); try{ localStorage.setItem("tracker-theme", t); }catch(_){} }
+let saved = null; try{ saved = localStorage.getItem("tracker-theme"); }catch(_){}
+setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+$("#themeBtn").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+
+init();
+</script>
+</body>
+</html>

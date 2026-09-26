@@ -1,0 +1,122 @@
+{
+  "title": "Skaeo app tracker",
+  "subtitle": "Every app we ship, with its repository, store listings, signing files, and versions for Android and iOS in one place.",
+  "lastUpdated": "2026-09-26",
+  "company": "Skaeo",
+  "stores": {
+    "playStore": {
+      "account": "Skaeo",
+      "url": "https://play.google.com/store/apps/developer?id=Skaeo"
+    },
+    "appStore": {
+      "account": "Dream Weavers Edutrack Pvt Ltd",
+      "url": "https://apps.apple.com/in/developer/dream-weavers-edutrack-pvt-ltd/id902907968"
+    }
+  },
+  "apps": [
+    {
+      "name": "MyRollCall.Pro",
+      "category": "Education",
+      "icon": "images/myrollcall.png",
+      "git": "https://github.com/mhl-dw-skyo/myrollcall.pro-app",
+      "packageName": "com.skyoindia.myrollcall",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.skyoindia.myrollcall",
+      "appStoreUrl": "https://apps.apple.com/in/app/id6740200813",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": "1.0.50"
+    },
+    {
+      "name": "Virasat-e-Khalsa",
+      "category": "Travel",
+      "icon": "images/virasat-e-khalsa.png",
+      "git": "https://github.com/mhl-dw-skyo/vek",
+      "packageName": "vek.skyo.app",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=vek.skyo.app",
+      "appStoreUrl": "https://apps.apple.com/in/app/id1659993319",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "UMA",
+      "category": "Travel",
+      "icon": "images/uma.png",
+      "git": "https://github.com/mhl-dw-skyo/ujjain-audio-guide",
+      "packageName": "",
+      "playStoreUrl": "",
+      "appStoreUrl": "https://apps.apple.com/in/app/id1624657841",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "Bhagat Singh Museum",
+      "category": "Travel",
+      "icon": "images/bhagat-singh-museum.png",
+      "git": "https://github.com/mhl-dw-skyo/shaheed-bhagat-singh",
+      "packageName": "bhagatsm.skyo.app",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=bhagatsm.skyo.app",
+      "appStoreUrl": "https://apps.apple.com/in/app/id6748353152",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "Dastaan-e-Shahadat",
+      "category": "Travel",
+      "icon": "images/dastaan-e-shahadat.png",
+      "git": "https://github.com/mhl-dw-skyo/dastan-e-shahadat",
+      "packageName": "skyo.dashtaan.app",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=skyo.dashtaan.app",
+      "appStoreUrl": "https://apps.apple.com/in/app/id1661303903",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "Sri Guru Teg Bahadur Museum",
+      "category": "Travel",
+      "icon": "images/guru-teg-bahadur.png",
+      "git": "https://github.com/mhl-dw-skyo/shri-guru-teg-bahadur",
+      "packageName": "",
+      "playStoreUrl": "",
+      "appStoreUrl": "https://apps.apple.com/in/app/id6447546503",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "Amritsar Guide",
+      "category": "Travel",
+      "icon": "images/amritsar-guide.png",
+      "git": "https://github.com/mhl-dw-skyo/theamritsarguide",
+      "packageName": "",
+      "playStoreUrl": "",
+      "appStoreUrl": "https://apps.apple.com/in/app/id1558437867",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    },
+    {
+      "name": "Kashi Vishwanath App",
+      "category": "Travel",
+      "icon": "images/kashi-vishwanath.png",
+      "git": "https://github.com/mhl-dw-skyo/varanasi-app",
+      "packageName": "skyo.varanasi.app",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=skyo.varanasi.app",
+      "appStoreUrl": "https://apps.apple.com/in/app/id6741062950",
+      "keystoreUrl": "",
+      "keyPropertiesUrl": "",
+      "androidVersion": "",
+      "iosVersion": ""
+    }
+  ]
+}
